@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/pages/pages.dart';
-import 'package:qr_reader/providers/ui_provider.dart';
+
+import 'package:qr_reader/providers/providers.dart';
 
 import '../widgets/widgets.dart';
 
@@ -37,6 +38,10 @@ class _HomePageBody extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
 
     final currentIndex = uiProvider.selectedMenuOpt;
+
+    final tempScan = new ScanModel(value: 'https');
+
+    DBProvider.db.newScan(tempScan);
 
     switch (currentIndex) {
       case 0:
