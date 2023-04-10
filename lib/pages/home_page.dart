@@ -39,14 +39,16 @@ class _HomePageBody extends StatelessWidget {
 
     final currentIndex = uiProvider.selectedMenuOpt;
 
-    final tempScan = new ScanModel(value: 'https');
-
-    DBProvider.db.newScan(tempScan);
+    final scanListProvider = Provider.of<ScanListProvider>(context);
 
     switch (currentIndex) {
       case 0:
+        scanListProvider.cargarScanPorTipo('geo');
+        // scanListProvider.chargeScansByType('geo');
         return const MapsPage();
       case 1:
+        scanListProvider.cargarScanPorTipo('http');
+        // scanListProvider.chargeScansByType('http');
         return const DirectionsPage();
       default:
         return const MapsPage();
